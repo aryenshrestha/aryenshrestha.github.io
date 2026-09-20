@@ -55,7 +55,17 @@
   color-scheme: light only;
 }
 
-html { color-scheme: light; }
+html {
+  color-scheme: light;
+  /* Always reserve room for the scrollbar: without it, a short page (the home
+     page) is wider than a scrolling one (research), and the centred nav and
+     content jump sideways when moving between them. */
+  scrollbar-gutter: stable;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html { overflow-y: scroll; }
+}
 
 body {
   font-family: var(--font-body);
