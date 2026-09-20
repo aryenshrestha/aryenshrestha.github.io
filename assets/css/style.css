@@ -384,6 +384,12 @@ section h2 {
   margin-bottom: 0.15rem;
 }
 
+/* Own name stands out in long coauthor lists */
+.paper-author-self {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 .paper-venue {
   font-size: 0.875rem;
   color: var(--color-text-muted);

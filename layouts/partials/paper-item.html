@@ -4,8 +4,12 @@
   (small, underlined via default link style), and an optional
   abstract toggle.
 
-  Expects a dict with: title, pdf, link, authors, venue_line, note,
-  note_link, abstract.
+  Expects a dict with: title, pdf, link, authors, venue_line, year,
+  note, note_link, abstract.
+
+  The site owner's own name is emphasised in the author list, and
+  "year" is shown for entries that have no venue line of their own
+  (working papers and works in progress) so a reader can date them.
 */}}
 {{ $p := . }}
 <article class="paper-item">
@@ -18,10 +22,20 @@
   {{ end }}
   {{ if $p.authors }}
   <p class="paper-authors">
-    {{- range $i, $a := $p.authors }}{{ if $i }}, {{ end }}{{ $a }}{{ end -}}
+    {{- range $i, $a := $p.authors }}{{ if $i }}, {{ end }}
+      {{- if eq $a site.Params.author -}}
+        <span class="paper-author-self">{{ $a }}</span>
+      {{- else -}}
+        {{ $a }}
+      {{- end -}}
+    {{ end -}}
   </p>
   {{ end }}
-  {{ with $p.venue_line }}<p class="paper-venue">{{ . }}</p>{{ end }}
+  {{ if $p.venue_line }}
+    <p class="paper-venue">{{ $p.venue_line }}</p>
+  {{ else }}
+    {{ with $p.year }}<p class="paper-venue">{{ . }}</p>{{ end }}
+  {{ end }}
   {{ with $p.note }}
     <p class="paper-note">
       {{ if $p.note_link }}<a href="{{ $p.note_link }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}

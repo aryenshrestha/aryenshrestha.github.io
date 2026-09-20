@@ -29,6 +29,15 @@ All changes auto-deploy within ~2 minutes of pushing to `main`. You can make eve
 3. If you have a PDF, upload it to `static/files/` and set `pdf: "files/filename.pdf"`.
 4. Commit. The site rebuilds automatically.
 
+Two things happen automatically from this entry:
+
+- **Your name is bolded** in the author list wherever it matches the
+  `author` value in `hugo.yaml`. Spell it identically ("Aryen Shrestha")
+  or it won't match.
+- **`year` is displayed** for working papers and works in progress. (For
+  published papers the year already appears at the end of the venue
+  line, so it isn't repeated.) Leave `year: ""` to show nothing.
+
 ---
 
 ## Mark a paper as published
@@ -74,6 +83,26 @@ Edit `data/policy.yaml` and add an entry:
   note: "Coverage in the Boston Globe"   # optional
   note_link: "https://..."              # optional, makes the note text above clickable
 ```
+
+---
+
+## Google Scholar indexing
+
+The research page carries `citation_*` meta tags describing your
+**working papers**, which is how Scholar finds papers hosted on a
+personal site. Published papers are left out on purpose — Scholar
+already has them through their DOIs, and it expects one paper's worth of
+tags per page.
+
+For Scholar to actually index a working paper it has to fetch the PDF
+from your own site. So upload the PDF to `static/files/` and set
+`pdf: "files/your-paper.pdf"` in `data/papers.yaml`; an external link
+(Dropbox, Google Drive) does not count, and no `citation_pdf_url` tag is
+emitted for one.
+
+If you ever list more than one working paper, the tags stop pointing at
+a single paper and Scholar's guidance is to give each paper its own
+page — worth revisiting then.
 
 ---
 

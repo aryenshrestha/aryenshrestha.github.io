@@ -7,11 +7,28 @@
 <meta name="author" content="{{ site.Params.author }}">
 {{ with site.Params.google_site_verification }}<meta name="google-site-verification" content="{{ . }}">{{ end }}
 
-<!-- Open Graph -->
-<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<!-- Open Graph / link previews -->
+{{ $ogTitle := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
+{{ $ogDesc := cond (ne .Description "") .Description site.Params.description }}
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:description" content="{{ $ogDesc }}">
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+{{ with site.Params.photo }}
+<meta property="og:image" content="{{ . | absURL }}">
+<meta property="og:image:alt" content="Photo of {{ site.Params.author }}">
+{{ end }}
+
+<!-- Twitter/X card. "summary" suits the square headshot; a wide banner
+     image would want summary_large_image instead. -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ $ogTitle }}">
+<meta name="twitter:description" content="{{ $ogDesc }}">
+{{ with site.Params.photo }}<meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+
+<!-- Google Scholar indexing (research page only) -->
+{{ if eq .RelPermalink (relURL "research/") }}{{ partial "scholar-meta.html" . }}{{ end }}
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">

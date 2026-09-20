@@ -21,7 +21,7 @@
 <section id="working-papers" aria-label="Working Papers">
   <h2>Working Papers</h2>
   {{ range $working }}
-    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "year" .year "abstract" .abstract) }}
   {{ end }}
 </section>
 {{ end }}
@@ -30,7 +30,7 @@
 <section id="works-in-progress" aria-label="Works in Progress">
   <h2>Works in Progress</h2>
   {{ range $wip }}
-    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "abstract" .abstract) }}
+    {{ partial "paper-item.html" (dict "title" .title "pdf" .pdf "link" .link "authors" .authors "year" .year "abstract" .abstract) }}
   {{ end }}
 </section>
 {{ end }}
