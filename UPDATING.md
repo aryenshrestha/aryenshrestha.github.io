@@ -106,9 +106,12 @@ page — worth revisiting then.
 
 ---
 
-## Change your email or institution info
+## Change your email, Scholar link, or institution info
 
 Edit `hugo.yaml` and update the relevant field under `params:`.
+
+The `scholar:` field is the Google Scholar link under your photo on the
+About page. Clear it (`scholar: ""`) and the link disappears.
 
 ---
 

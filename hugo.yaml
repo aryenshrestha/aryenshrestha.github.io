@@ -10,6 +10,7 @@ params:
   department: "Public Policy (Economics Track)"
   photo: "images/photo.jpg"
   cv: "files/cv.pdf"
+  scholar: "https://scholar.google.com/citations?user=EM9vBJYAAAAJ&hl=en"
   citizenship: "Nepal"
   google_site_verification: "j2we0FbDvpvynIrkHbbp_mFb5WeSPwN2Oe0OTTIQnFk"
 

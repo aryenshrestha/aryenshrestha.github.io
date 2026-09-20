@@ -17,6 +17,12 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
           <span class="copy-text">{{ site.Params.email }}</span>
         </a>
+        {{ with site.Params.scholar }}
+        <a class="icon-link" href="{{ . }}" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8.5 12 14l10-5.5L12 3Z"/><path d="M6 11v4.6c0 1.5 2.7 2.6 6 2.6s6-1.1 6-2.6V11"/></svg>
+          <span>Google Scholar</span>
+        </a>
+        {{ end }}
       </div>
     </div>
     <div class="hero-main">
