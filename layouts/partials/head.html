@@ -30,10 +30,9 @@
 <!-- Google Scholar indexing (research page only) -->
 {{ if eq .RelPermalink (relURL "research/") }}{{ partial "scholar-meta.html" . }}{{ end }}
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+<!-- No favicon: an empty data URI stops browsers requesting /favicon.ico
+     (which would 404) and they show their default tab icon instead. -->
+<link rel="icon" href="data:,">
 
 <!-- Stylesheet -->
 {{ $css := resources.Get "css/style.css" | resources.Minify | resources.Fingerprint }}
